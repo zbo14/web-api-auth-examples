@@ -1,14 +1,12 @@
-/**
- * This is an example of a basic node.js script that performs
- * the Implicit Grant oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
- * For more information, read
- * https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow
- */
+'use strict'
 
-var express = require('express'); // Express web server framework
-var app = express();
-app.use(express.static(__dirname + '/public'));
-console.log('Listening on 8888');
-app.listen(8888);
+const express = require('express')
+const path = require('path')
+
+const app = express()
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
+
+app.listen(8888, () => console.log('Server listening on 8888'))
